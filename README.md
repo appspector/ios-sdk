@@ -18,16 +18,14 @@ To use cocoapods add this line to your podfile and run `pod install`:
 ## Configure
 
 ### Objective-C
-```
+```objective-c
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:YOUR_API_KEY monitorIDs:AS_ALL_MONITORS metadata:nil];
 [[AppSpector spector] runWithConfig:config];
 ```
 
 ### Swift
-```
-let config = AppSpectorConfig(apiKey: "YOUR_API_KEY",
-                                      monitorIDs: [AS_LOG_MONITOR],
-                                      metadata: nil)
+```swift
+let config = AppSpectorConfig(apiKey: "YOUR_API_KEY", monitorIDs: [AS_LOG_MONITOR], metadata: nil)
 AppSpector().run(with: config)
 ```
 
