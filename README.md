@@ -12,7 +12,9 @@ Then navigate to your project settings and under 'General' tab add AppSpectorSDK
 
 To use cocoapods add this line to your podfile and run `pod install`:
 
-`pod 'AppSpectorSDK', :podspec => 'https://raw.githubusercontent.com/appspector/ios-sdk/master/AppSpectorSDK.podspec'`
+```
+pod 'AppSpectorSDK', :podspec => 'https://raw.githubusercontent.com/appspector/ios-sdk/master/AppSpectorSDK.podspec'
+```
 
 
 ## Configure
