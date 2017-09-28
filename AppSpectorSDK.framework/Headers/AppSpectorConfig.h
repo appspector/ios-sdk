@@ -8,24 +8,31 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NSDictionary <NSString *, NSString *> ASMetadata;
-
 @interface AppSpectorConfig : NSObject
 
 @property (copy, nonatomic) NSString *apiKey;
-@property (strong, nonatomic) NSArray <NSString *> *monitorIDs;
-@property (strong, nonatomic) ASMetadata *metadata;
+@property (strong, nonatomic) NSSet <NSString *> *monitorIDs;
 
 /**
  Designated initializer for config
 
  @param apiKey NSString key used to access application instance. You can get one on settings page after creating app on the frontend.
- @param monitorIDs NSArray <NSString *> list of monitor IDs to load. Use `AS_ALL_MONITORS` macro to enable all provided monitors.
- @param metadata ASMetadata Dictionary with string key-value pairs. Reserved for future use.
+ @param monitorIDs NSSet <NSString *> list of monitor IDs to load. Use `AS_ALL_MONITORS` macro to enable all provided monitors.
  
  @return AppSpectorConfig
  */
-+ (instancetype)configWithAPIKey:(NSString *)apiKey monitorIDs:(NSArray <NSString *> *)monitorIDs metadata:(ASMetadata *)metadata;
++ (instancetype)configWithAPIKey:(NSString *)apiKey monitorIDs:(NSSet <NSString *> *)monitorIDs;
+
+
+/**
+ Convinience initializer.
+ Builds config with all monitors enabled.
+
+ @param apiKey NSString key used to access application instance. You can get one on settings page after creating app on the frontend.
+ 
+ @return AppSpectorConfig
+ */
++ (instancetype)configWithAPIKey:(NSString *)apiKey;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)new NS_UNAVAILABLE;

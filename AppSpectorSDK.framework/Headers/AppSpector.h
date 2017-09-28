@@ -18,18 +18,7 @@ static NSString * const AS_COREDATA_MONITOR     = @"coredata-monitor";
 static NSString * const AS_PERFORMANCE_MONITOR  = @"performance-monitor";
 static NSString * const AS_LOG_MONITOR          = @"logger";
 
-/**
- Macro to enable all monitors at once.
- */
-#define AS_ALL_MONITORS @[AS_SCREENSHOT_MONITOR, \
-                          AS_SQLITE_MONITOR,\
-                          AS_HTTP_MONITOR, \
-                          AS_COREDATA_MONITOR, \
-                          AS_PERFORMANCE_MONITOR, \
-                          AS_LOG_MONITOR]
-
 @interface AppSpector : NSObject
-
 
 /**
  Initializer for AppSPector shared instance
