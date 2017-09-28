@@ -18,16 +18,38 @@ pod 'AppSpectorSDK', :podspec => 'https://raw.githubusercontent.com/appspector/i
 
 
 ## Configure
+AppSpector uses modules called monitors to track different app activities and gather stats.
+We provide a bunch of monitors out of the box which could be used together or in any combinations.
+To start AppSpector you need to build instance of `AppSpectorConfig` and provide your API key.
+You can start exact monitors with:
+
+```configWithAPIKey:(NSString *)apiKey monitorIDs:(NSSet <NSString *> *)monitorIDs``` 
+
+Or start all available with:
+
+```configWithAPIKey:(NSString *)apiKey```
+
+Available monitors:
+
+```
+AS_SCREENSHOT_MONITOR
+AS_SQLITE_MONITOR
+AS_HTTP_MONITOR
+AS_COREDATA_MONITOR
+AS_PERFORMANCE_MONITOR
+AS_LOG_MONITOR
+```
 
 ### Objective-C
 ```objective-c
-AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:YOUR_API_KEY monitorIDs:AS_ALL_MONITORS metadata:nil];
+NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
+AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:API_KEY monitorIDs:monitorIDs];
 [[AppSpector spector] runWithConfig:config];
 ```
 
 ### Swift
 ```swift
-let config = AppSpectorConfig(apiKey: "YOUR_API_KEY", monitorIDs: [AS_LOG_MONITOR], metadata: nil)
+let config = AppSpectorConfig(apiKey: API_KEY, monitorIDs: [AS_HTTP_MONITOR, AS_LOG_MONITOR])
 AppSpector().run(with: config)
 ```
 
