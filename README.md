@@ -44,7 +44,7 @@ AS_LOG_MONITOR
 ```objective-c
 NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:API_KEY monitorIDs:monitorIDs];
-[[AppSpector spector] runWithConfig:config];
+[AppSpector runWithConfig:config];
 ```
 
 ### Swift
