@@ -1,4 +1,5 @@
-# AppSpector
+# ![AppSpector](https://github.com/appspector/ios-sdk/raw/master/appspector-logo.png)
+
 With AppSpector you can remotely debug your app running in the same room or on another continent. 
 You can measure app performance, view database content, logs, network requests and many more in realtime. 
 This is the instrument that you've been looking for. Don't limit yourself only to simple logs. 
