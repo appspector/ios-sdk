@@ -6,8 +6,10 @@ This is the instrument that you've been looking for. Don't limit yourself only t
 Debugging don't have to be painful!
 
 ## Getting Started
-You can integrate AppSpector SDK linking to the framework manually or using Cocoapods.
+Each app you want to use with AppSpector SDK you have to register on the web (https://app.appspector.com).
+After adding the application navigate to app settings and copy API key.
 
+You can integrate AppSpector SDK linking to the framework manually or using Cocoapods.
 To manually link just download AppSpectorSDK.zip, extract it and drop AppSpectorSDK.framework to your XCode project.
 Then navigate to your project settings and under 'General' tab add AppSpectorSDK framework to 'Embedded Binaries' section.
 
