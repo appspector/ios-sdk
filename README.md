@@ -53,7 +53,7 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:API_KEY monitorIDs
 ### Swift
 ```swift
 let config = AppSpectorConfig(apiKey: API_KEY, monitorIDs: [AS_HTTP_MONITOR, AS_LOG_MONITOR])
-AppSpector().run(with: config)
+AppSpector.run(with: config)
 ```
 
 ## Feedback
