@@ -23,7 +23,7 @@ pod 'AppSpectorSDK', :podspec => 'https://raw.githubusercontent.com/appspector/i
 AppSpector provides 6 monitors that tracks different activities inside your app:
 
 #### Screenshot monitor
-Simply captures screenshot from the device
+Simply captures screenshot from the device.
 
 #### SQLite monitor
 Provides browser for sqlite databases found in your app. Allows to track all queries, shows DB scheme and data in DB. You can issue custom SQL query on any DB and see results in browser immediately.
