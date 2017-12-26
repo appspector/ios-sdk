@@ -1,0 +1,6 @@
+framework module AppSpectorSDK {
+  umbrella header "AppSpectorSDK.h"
+
+  export *
+  module * { export * }
+}
