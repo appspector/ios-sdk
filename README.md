@@ -19,6 +19,8 @@ To use cocoapods add this line to your podfile and run `pod install`:
 pod 'AppSpectorSDK', :podspec => 'https://raw.githubusercontent.com/appspector/ios-sdk/master/AppSpectorSDK.podspec'
 ```
 
+[Join our slack to discuss setup process and features](https://slack.appspector.com)
+
 ## Features
 AppSpector provides 6 monitors that tracks different activities inside your app:
 
