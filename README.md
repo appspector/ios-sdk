@@ -9,15 +9,19 @@ Debugging don't have to be painful!
 Each app you want to use with AppSpector SDK you have to register on the web (https://app.appspector.com).
 After adding the application navigate to app settings and copy API key.
 
+<!-- integration-manual-start -->
 You can integrate AppSpector SDK linking to the framework manually or using Cocoapods.
 To manually link just download AppSpectorSDK.zip, extract it and drop AppSpectorSDK.framework to your XCode project.
 Then navigate to your project settings and under 'General' tab add AppSpectorSDK framework to 'Embedded Binaries' section.
+<!-- integration-manual-end -->
 
+<!-- integration-pods-start -->
 To use cocoapods add this line to your podfile and run `pod install`:
 
 ```
 pod 'AppSpectorSDK', :podspec => 'https://raw.githubusercontent.com/appspector/ios-sdk/master/AppSpectorSDK.podspec'
 ```
+<!-- integration-pods-end -->
 
 [Join our slack to discuss setup process and features](https://slack.appspector.com)
 
@@ -73,19 +77,24 @@ AS_LOCATION_MONITOR
 
 
 ### Objective-C
+<!-- integration-objc-example-start -->
 Starting only selected monitors:
 ```objective-c
 NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" monitorIDs:monitorIDs];
 [AppSpector runWithConfig:config];
 ```
+<!-- objective-example-start -->
+
 Or all at once:
 ```
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 [AppSpector runWithConfig:config];
 ```
+<!-- integration-objc-example-end -->
 
 ### Swift
+<!-- integration-swift-example-start -->
 ```swift
 let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [AS_HTTP_MONITOR, AS_LOG_MONITOR])
 AppSpector.run(with: config)
@@ -95,6 +104,7 @@ or to start all monitors:
 let config = AppSpectorConfig(apiKey: "API_KEY")
 AppSpector.run(with: config)
 ```
+<!-- integration-swift-example-end -->
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
