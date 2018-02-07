@@ -84,7 +84,6 @@ NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" monitorIDs:monitorIDs];
 [AppSpector runWithConfig:config];
 ```
-<!-- objective-example-start -->
 
 Or all at once:
 ```
