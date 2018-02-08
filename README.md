@@ -94,6 +94,7 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 
 ### Swift
 <!-- integration-swift-example-start -->
+Starting only selected monitors:
 ```swift
 let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [AS_HTTP_MONITOR, AS_LOG_MONITOR])
 AppSpector.run(with: config)
