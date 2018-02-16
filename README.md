@@ -5,23 +5,32 @@ You can measure app performance, view database content, logs, network requests a
 This is the instrument that you've been looking for. Don't limit yourself only to simple logs. 
 Debugging don't have to be painful!
 
-## Getting Started
+## Installation
 Each app you want to use with AppSpector SDK you have to register on the web (https://app.appspector.com).
 After adding the application navigate to app settings and copy API key.
 
+#### Manually
 <!-- integration-manual-start -->
-You can integrate AppSpector SDK linking to the framework manually or using Cocoapods.
 To manually link just download AppSpectorSDK.zip, extract it and drop AppSpectorSDK.framework to your XCode project.
 Then navigate to your project settings and under 'General' tab add AppSpectorSDK framework to 'Embedded Binaries' section.
 <!-- integration-manual-end -->
 
+#### CocoaPods
 <!-- integration-pods-start -->
 To use cocoapods add this line to your podfile and run `pod install`:
 
 ```
-pod 'AppSpectorSDK', :podspec => 'https://raw.githubusercontent.com/appspector/ios-sdk/master/AppSpectorSDK.podspec'
+pod 'AppSpectorSDK'
 ```
 <!-- integration-pods-end -->
+
+#### Carthage
+<!-- integration-carthage-start -->
+- Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
+- Add github "appspector/ios-sdk" to your Cartfile
+- Run `carthage update`
+- Drag AppSpectorSDK.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
+<!-- integration-carthage-end -->
 
 [Join our slack to discuss setup process and features](https://slack.appspector.com)
 
