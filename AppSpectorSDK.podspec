@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name             = 'AppSpectorSDK'
-    s.version          = '0.3.4'
-    s.summary          = 'Debugging doesn't have to be painful!'
+    s.version          = '0.4'
+    s.summary          = 'Debugging doesn\'t have to be painful!'
     s.homepage         = 'http://appspector.com'
     s.license          = { type: 'MIT', file: 'LICENSE' }
     s.author           = { 'Techery' => 'heroes@techery.io' }
