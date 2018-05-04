@@ -5,6 +5,8 @@ You can measure app performance, view database content, logs, network requests a
 This is the instrument that you've been looking for. Don't limit yourself only to simple logs. 
 Debugging don't have to be painful!
 
+[![GitHub release](https://img.shields.io/github/release/appspector/ios-sdk.svg)](https://github.com/appspector/ios-sdk)
+
 ## Installation
 Each app you want to use with AppSpector SDK you have to register on the web (https://app.appspector.com).
 After adding the application navigate to app settings and copy API key.
