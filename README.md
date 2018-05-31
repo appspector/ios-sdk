@@ -140,5 +140,22 @@ AppSpector.run(with: config)
 ```
 <!-- integration-swift-example-end -->
 
+## Start/Stop API
+AppSpector starts automatically.
+To stop AppSpector communicating with web client use start/stop API.  
+⚠️ Beware that starting SDK will create a new debug session.
+<!-- start-stop-swift-example-start -->
+```swift
+AppSpector.stop()
+AppSpector.start()
+```
+<!-- start-stop-swift-example-end -->
+<!-- start-stop-objc-example-start -->
+```objective-c
+[AppSpector stop];
+[AppSpector start];
+```
+<!-- start-stop-objc-example-end -->
+
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
