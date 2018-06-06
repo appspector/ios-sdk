@@ -191,6 +191,7 @@ Or we want to raise log level to `warning` for all messages containing word 'tok
 }];
 ```
 
+See events headers for more info.
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
