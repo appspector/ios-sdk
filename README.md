@@ -140,22 +140,29 @@ AppSpector.run(with: config)
 ```
 <!-- integration-swift-example-end -->
 
-## Start/Stop API
-AppSpector starts automatically.
-To stop AppSpector communicating with web client use start/stop API.  
-⚠️ Beware that starting SDK will create a new debug session.
-<!-- start-stop-swift-example-start -->
-```swift
-AppSpector.stop()
-AppSpector.start()
-```
-<!-- start-stop-swift-example-end -->
+## Start/Stop SDK
+AppSpector start is two step process.
+When you link with AppSpector framework it starts to collect data immediately after load. When you call `startWithConfig` method - AppSpector opens a connection to the backend and from that point you can see your session on the frontend.
+
+You can manually control AppSpector state by calling `start` and `stop` methods.
+`stop` tells AppSpector to disable all data collection and close current session.
+`start` starts it again using config you provided at load. This will be a new session, all activity between `stop` and `start` calls will not be tracked.
+
+### Objective-C
 <!-- start-stop-objc-example-start -->
 ```objective-c
 [AppSpector stop];
 [AppSpector start];
 ```
 <!-- start-stop-objc-example-end -->
+
+### Swift
+<!-- start-stop-swift-example-start -->
+```swift
+AppSpector.stop()
+AppSpector.start()
+```
+<!-- start-stop-swift-example-end -->
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
