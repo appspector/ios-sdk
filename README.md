@@ -82,7 +82,7 @@ AS_LOCATION_MONITOR
 
 
 
-### Objective-C
+#### Objective-C
 <!-- integration-objc-example-start -->
 Starting only selected monitors:
 ```objective-c
@@ -98,7 +98,7 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 ```
 <!-- integration-objc-example-end -->
 
-### Swift
+#### Swift
 <!-- integration-swift-example-start -->
 Starting only selected monitors:
 ```swift
@@ -120,7 +120,7 @@ You can manually control AppSpector state by calling `start` and `stop` methods.
 `stop` tells AppSpector to disable all data collection and close current session.
 `start` starts it again using config you provided at load. This will be a new session, all activity between `stop` and `start` calls will not be tracked.
 
-### Objective-C
+#### Objective-C
 <!-- start-stop-objc-example-start -->
 ```objective-c
 [AppSpector stop];
@@ -128,7 +128,7 @@ You can manually control AppSpector state by calling `start` and `stop` methods.
 ```
 <!-- start-stop-objc-example-end -->
 
-### Swift
+#### Swift
 <!-- start-stop-swift-example-start -->
 ```swift
 AppSpector.stop()
@@ -166,6 +166,30 @@ Gathers all of the environment variables and arguments in one place, info.plist,
 
 
 ## Filtering your data
+Sometimes you may want to adjust or completely skip some pieces of data AppSpector gather. We have a special feature called Sanitizing for this, for now it's available only for HTTP and logs monitors, more coming.
+For these two monitors you can provide a filter which allows to modify or block events before AppSpector sends them to the backend. Filter is a callback you assign to a `AppSpectorConfig` property `httpSanitizer` for HTTP monitor or `logSanitizer` for logs monitor. Filter callback gets event as its argument and should return it.
+
+Some examples. Let's say we want to skip our auth token from requests headers:
+```
+[config.httpSanitizer setFilter:^ASHTTPEvent *(ASHTTPEvent *event) {
+    if ([event.request.allHTTPHeaderFields.allKeys containsObject:@"YOUR-AUTH-HEADER"]) {
+        [event.request setValue:@"redacted" forHTTPHeaderField:@"YOUR-AUTH-HEADER"];
+    }
+
+    return event;
+}];
+```
+
+Or we want to raise log level to `warning` for all messages containing word 'token':
+```
+[config.logSanitizer setFilter:^ASLogMonitorEvent *(ASLogMonitorEvent *event) {
+    if ([event.message rangeOfString:@"token"].location != NSNotFound) {
+        event.level = ASLogEventLevelWarn;
+    }
+
+    return event;
+}];
+```
 
 
 ## Feedback
