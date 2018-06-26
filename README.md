@@ -84,6 +84,13 @@ Most of the apps are location-aware. Testing it requires changing locations your
 #### Environment monitor
 Gathers all of the environment variables and arguments in one place, info.plist, cli arguments and much more.
 
+#### User Defaults monitor
+Shows contents of standart user defaults and allows to edit them. Your changes become available for your app immediately.
+
+#### Notification Center monitor
+Tracks all posted notifications and subscriptions. You can examine notification user info, sender/reciever objects, etc.
+And naturally you can post notifications to your app from the frontend.
+
 ## Configure
 AppSpector uses modules called monitors to track different app activities and gather stats.
 We provide a bunch of monitors out of the box which could be used together or in any combinations.
@@ -106,6 +113,9 @@ AS_COREDATA_MONITOR
 AS_PERFORMANCE_MONITOR
 AS_LOG_MONITOR
 AS_LOCATION_MONITOR
+AS_ENVIRONMENT_MONITOR
+AS_DEFAULTS_MONITOR
+AS_NOTIFICATION_MONITOR
 ```
 
 
