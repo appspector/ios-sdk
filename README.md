@@ -5,11 +5,11 @@ You can measure app performance, view database content, logs, network requests a
 This is the instrument that you've been looking for. Don't limit yourself only to simple logs. 
 Debugging don't have to be painful!
 
-[![GitHub release](https://img.shields.io/github/release/appspector/ios-sdk.svg)](https://github.com/appspector/ios-sdk)
 
 ## Installation
 Each app you want to use with AppSpector SDK you have to register on the web (https://app.appspector.com).
 After adding the application navigate to app settings and copy API key.
+To use AppSpector on tvOS just follow installation steps below but use AppSpectorTVSDK instead.
 
 #### Manually
 <!-- integration-manual-start -->
@@ -59,8 +59,9 @@ AppSpector is also available for tvOS, you can use any of described above method
 
 [Join our slack to discuss setup process and features](https://slack.appspector.com)
 
+
 ## Features
-AppSpector provides 8 monitors that tracks different activities inside your app:
+AppSpector provides 10 monitors that tracks different activities inside your app:
 
 #### Screenshot monitor
 Simply captures screenshot from the device.
@@ -119,7 +120,7 @@ AS_NOTIFICATION_MONITOR
 
 
 
-### Objective-C
+#### Objective-C
 <!-- integration-objc-example-start -->
 Starting only selected monitors:
 ```objective-c
@@ -135,7 +136,7 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 ```
 <!-- integration-objc-example-end -->
 
-### Swift
+#### Swift
 <!-- integration-swift-example-start -->
 Starting only selected monitors:
 ```swift
@@ -157,7 +158,7 @@ You can manually control AppSpector state by calling `start` and `stop` methods.
 `stop` tells AppSpector to disable all data collection and close current session.
 `start` starts it again using config you provided at load. This will be a new session, all activity between `stop` and `start` calls will not be tracked.
 
-### Objective-C
+#### Objective-C
 <!-- start-stop-objc-example-start -->
 ```objective-c
 [AppSpector stop];
@@ -165,13 +166,41 @@ You can manually control AppSpector state by calling `start` and `stop` methods.
 ```
 <!-- start-stop-objc-example-end -->
 
-### Swift
+#### Swift
 <!-- start-stop-swift-example-start -->
 ```swift
 AppSpector.stop()
 AppSpector.start()
 ```
 <!-- start-stop-swift-example-end -->
+
+## Filtering your data
+Sometimes you may want to adjust or completely skip some pieces of data AppSpector gather. We have a special feature called Sanitizing for this, for now it's available only for HTTP and logs monitors, more coming.
+For these two monitors you can provide a filter which allows to modify or block events before AppSpector sends them to the backend. Filter is a callback you assign to a `AppSpectorConfig` property `httpSanitizer` for HTTP monitor or `logSanitizer` for logs monitor. Filter callback gets event as its argument and should return it.
+
+Some examples. Let's say we want to skip our auth token from requests headers:
+```
+[config.httpSanitizer setFilter:^ASHTTPEvent *(ASHTTPEvent *event) {
+    if ([event.request.allHTTPHeaderFields.allKeys containsObject:@"YOUR-AUTH-HEADER"]) {
+        [event.request setValue:@"redacted" forHTTPHeaderField:@"YOUR-AUTH-HEADER"];
+    }
+
+    return event;
+}];
+```
+
+Or we want to raise log level to `warning` for all messages containing word 'token':
+```
+[config.logSanitizer setFilter:^ASLogMonitorEvent *(ASLogMonitorEvent *event) {
+    if ([event.message rangeOfString:@"token"].location != NSNotFound) {
+        event.level = ASLogEventLevelWarn;
+    }
+
+    return event;
+}];
+```
+
+See events headers for more info.
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
