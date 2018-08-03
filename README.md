@@ -28,7 +28,7 @@ for arch in $archs; do
         stripped="$stripped $arch"
     fi
 done
-echo "AppSPector: stripped archs: $stripped"
+echo "AppSpector: stripped archs: $stripped"
 
 ```
 
