@@ -20,6 +20,14 @@ pod 'AppSpectorSDK'
 ```
 <!-- integration-pods-end -->
 
+#### Carthage
+<!-- integration-carthage-start -->
+- Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
+- Add github "appspector/ios-sdk" to your Cartfile
+- Run `carthage update`
+- Drag AppSpectorSDK.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
+<!-- integration-carthage-end -->
+
 #### Manually
 <!-- integration-manual-start -->
 To manually link just download AppSpectorSDK.zip, extract it and drop AppSpectorSDK.framework to your XCode project.
@@ -45,14 +53,6 @@ This script is required as a workaround for this [Apple AppStore bug](http://www
 
 
 <!-- integration-manual-end -->
-
-#### Carthage
-<!-- integration-carthage-start -->
-- Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
-- Add github "appspector/ios-sdk" to your Cartfile
-- Run `carthage update`
-- Drag AppSpectorSDK.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
-<!-- integration-carthage-end -->
 
 #### Apple TV
 AppSpector is also available for tvOS, you can use any of described above methods to install it, all you need is just use `AppSpectorTVSDK` pod instead of `AppSpectorSDK` and include `AppSpectorTVSDK.framework` instead of `AppSpectorSDK.framework`.
@@ -128,7 +128,19 @@ AS_ENVIRONMENT_MONITOR
 AS_NOTIFICATION_MONITOR
 ```
 
-
+#### Swift
+<!-- integration-swift-example-start -->
+Starting only selected monitors:
+```swift
+let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [AS_HTTP_MONITOR, AS_LOG_MONITOR])
+AppSpector.run(with: config)
+```
+or to start all monitors:
+```
+let config = AppSpectorConfig(apiKey: "API_KEY")
+AppSpector.run(with: config)
+```
+<!-- integration-swift-example-end -->
 
 #### Objective-C
 <!-- integration-objc-example-start -->
@@ -146,20 +158,6 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 ```
 <!-- integration-objc-example-end -->
 
-#### Swift
-<!-- integration-swift-example-start -->
-Starting only selected monitors:
-```swift
-let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [AS_HTTP_MONITOR, AS_LOG_MONITOR])
-AppSpector.run(with: config)
-```
-or to start all monitors:
-```
-let config = AppSpectorConfig(apiKey: "API_KEY")
-AppSpector.run(with: config)
-```
-<!-- integration-swift-example-end -->
-
 ## Start/Stop SDK
 AppSpector start is two step process.
 When you link with AppSpector framework it starts to collect data immediately after load. When you call `startWithConfig` method - AppSpector opens a connection to the backend and from that point you can see your session on the frontend.
@@ -168,14 +166,6 @@ You can manually control AppSpector state by calling `start` and `stop` methods.
 `stop` tells AppSpector to disable all data collection and close current session.
 `start` starts it again using config you provided at load. This will be a new session, all activity between `stop` and `start` calls will not be tracked.
 
-#### Objective-C
-<!-- start-stop-objc-example-start -->
-```objective-c
-[AppSpector stop];
-[AppSpector start];
-```
-<!-- start-stop-objc-example-end -->
-
 #### Swift
 <!-- start-stop-swift-example-start -->
 ```swift
@@ -183,6 +173,14 @@ AppSpector.stop()
 AppSpector.start()
 ```
 <!-- start-stop-swift-example-end -->
+
+#### Objective-C
+<!-- start-stop-objc-example-start -->
+```objective-c
+[AppSpector stop];
+[AppSpector start];
+```
+<!-- start-stop-objc-example-end -->
 
 ## Filtering your data
 Sometimes you may want to adjust or completely skip some pieces of data AppSpector gather. We have a special feature called Sanitizing for this, for now it's available only for HTTP and logs monitors, more coming.
