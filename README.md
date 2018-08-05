@@ -11,6 +11,15 @@ Each app you want to use with AppSpector SDK you have to register on the web (ht
 After adding the application navigate to app settings and copy API key.
 To use AppSpector on tvOS just follow installation steps below but use AppSpectorTVSDK instead.
 
+#### CocoaPods
+<!-- integration-pods-start -->
+To use cocoapods add this line to your podfile and run `pod install`:
+
+```
+pod 'AppSpectorSDK'
+```
+<!-- integration-pods-end -->
+
 #### Manually
 <!-- integration-manual-start -->
 To manually link just download AppSpectorSDK.zip, extract it and drop AppSpectorSDK.framework to your XCode project.
@@ -36,15 +45,6 @@ This script is required as a workaround for this [Apple AppStore bug](http://www
 
 
 <!-- integration-manual-end -->
-
-#### CocoaPods
-<!-- integration-pods-start -->
-To use cocoapods add this line to your podfile and run `pod install`:
-
-```
-pod 'AppSpectorSDK'
-```
-<!-- integration-pods-end -->
 
 #### Carthage
 <!-- integration-carthage-start -->
