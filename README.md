@@ -132,7 +132,7 @@ AS_NOTIFICATION_MONITOR
 <!-- integration-swift-example-start -->
 Starting only selected monitors:
 ```swift
-let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [AS_HTTP_MONITOR, AS_LOG_MONITOR])
+let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [Monitor.http, Monitor.logs])
 AppSpector.run(with: config)
 ```
 or to start all monitors:
