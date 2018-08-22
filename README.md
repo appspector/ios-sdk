@@ -27,12 +27,12 @@ pod 'AppSpectorSDK'
 - Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
 - Add github "appspector/ios-sdk" to your Cartfile
 - Run `carthage update`
-- Drag AppSpectorSDK.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
+- Drag [AppSpectorSDK.framework](https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDK.framework.zip) from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
 <!-- integration-carthage-end -->
 
 #### Manually
 <!-- integration-manual-start -->
-To manually link just download AppSpectorSDK.zip, extract it and drop AppSpectorSDK.framework to your XCode project.
+To manually link just download [AppSpectorSDK.framework.zip](https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDK.framework.zip), extract it and drop AppSpectorSDK.framework to your XCode project.
 Then navigate to your project settings and under 'General' tab add AppSpectorSDK framework to 'Embedded Binaries' section.
 
 If you plan either to submit builds with AppSpector SDK to the Apple TestFlight for testing or archive them for AdHoc distribution you'll have to perform one more step: create a new “Run Script Phase” in your app’s target’s “Build Phases” and paste the following script:
