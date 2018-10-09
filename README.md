@@ -132,6 +132,11 @@ AS_NOTIFICATION_MONITOR
 
 #### Swift
 <!-- integration-swift-example-start -->
+First import the framework:
+```
+import AppSpectorSDK
+```
+
 Starting only selected monitors:
 ```swift
 let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [Monitor.http, Monitor.logs])
@@ -146,6 +151,11 @@ AppSpector.run(with: config)
 
 #### Objective-C
 <!-- integration-objc-example-start -->
+First import the framework:
+```
+@import AppSpectorSDK;
+```
+
 Starting only selected monitors:
 ```objective-c
 NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
