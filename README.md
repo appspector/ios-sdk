@@ -170,6 +170,24 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 ```
 <!-- integration-objc-example-end -->
 
+## Custom device name
+
+You can assign a custom name to your device to easily find needed sessions in sessions list.
+To do this you have to add desired name as a value for `AS_DEVICE_NAME_KEY` key to the `config.metadata` dictionary:
+
+#### Swift
+```swift
+let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [Monitor.http, Monitor.logs])
+config.metadata = [ MetadataKey.DeviceNameKey : "Your device name" ]
+```
+
+#### Objective-C
+```objective-c
+AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" monitorIDs:monitorIDs];
+config.metadata = @{ AS_DEVICE_NAME_KEY : @"Your device name" };
+```
+
+
 ## Start/Stop SDK
 AppSpector start is two step process.
 When you link with AppSpector framework it starts to collect data immediately after load. When you call `startWithConfig` method - AppSpector opens a connection to the backend and from that point you can see your session on the frontend.
