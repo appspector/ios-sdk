@@ -1,3 +1,4 @@
+[![GitHub release](https://img.shields.io/github/release/appspector/ios-sdk.svg)](https://github.com/appspector/ios-sdk)
 # ![AppSpector](https://github.com/appspector/ios-sdk/raw/master/github-cover.png)
 
 With AppSpector you can remotely debug your app running in the same room or on another continent. 
@@ -24,8 +25,6 @@ To use AppSpector on tvOS just follow installation steps below but use AppSpecto
 #### CocoaPods
 <!-- integration-pods-start -->
 To use cocoapods add this line to your podfile and run `pod install`:
-
-[![GitHub release](https://img.shields.io/github/release/appspector/ios-sdk.svg)](https://github.com/appspector/ios-sdk)
 
 ```
 pod 'AppSpectorSDK'
