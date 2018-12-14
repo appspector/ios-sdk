@@ -9,10 +9,10 @@ Debugging don't have to be painful!
 * [Installation](#installation)
 * [Features](#features)
 * [Configure](#configure)
-* [Custom device name](#custom-device-name)
-* [Start/Stop SDK](#start-stop-sdk)
-* [Filtering your data](#filtering-your-data)
-* [Getting session URL](#getting-session-url)
+    * [Custom device name](#custom-device-name)
+    * [Start/Stop SDK](#start/stop-sdk)
+    * [Filtering your data](#filtering-your-data)
+    * [Getting session URL](#getting-session-url)
 
 
 
