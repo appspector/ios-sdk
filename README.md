@@ -10,7 +10,7 @@ Debugging don't have to be painful!
 * [Features](#features)
 * [Configure](#configure)
     * [Custom device name](#custom-device-name)
-    * [Start/Stop SDK](#start/stop-sdk)
+    * [Start/Stop SDK](#startstop-sdk)
     * [Filtering your data](#filtering-your-data)
     * [Getting session URL](#getting-session-url)
 
