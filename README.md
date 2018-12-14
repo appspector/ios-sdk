@@ -6,6 +6,16 @@ This is the instrument that you've been looking for. Don't limit yourself only t
 Debugging don't have to be painful!
 
 
+* [Installation](#installation)
+* [Features](#features)
+* [Configure](#configure)
+* [Custom device name](#custom-device-name)
+* [Start/Stop SDK](#start-stop-sdk)
+* [Filtering your data](#filtering-your-data)
+* [Getting session URL](#getting-session-url)
+
+
+
 ## Installation
 Each app you want to use with AppSpector SDK you have to register on the web (https://app.appspector.com).
 After adding the application navigate to app settings and copy API key.
