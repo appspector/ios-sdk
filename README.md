@@ -240,5 +240,19 @@ Or we want to raise log level to `warning` for all messages containing word 'tok
 
 See events headers for more info.
 
+## Getting session URL
+Sometimes you may need to get URL pointing to current session from code. Say you want link crash in your crash reporter with it, write it to logs or display in your debug UI. To get this URL you have to add a session start callback:
+
+```
+[config setStartCallback:^(NSURL *sessionURL) {
+    // Save url for future use...
+}];
+```
+
+Some hints:
+- Callback get called on a non-main thread and not guaranteed to be called on a caller thread so be carefull with not thread-safe APIs inside it
+- Callback will be called again upon restart, either when you call `stop`/`start` methods or when session was dropped due to networking issues
+
+
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
