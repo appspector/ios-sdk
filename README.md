@@ -1,9 +1,20 @@
+[![GitHub release](https://img.shields.io/github/release/appspector/ios-sdk.svg)](https://github.com/appspector/ios-sdk)
 # ![AppSpector](https://github.com/appspector/ios-sdk/raw/master/github-cover.png)
 
 With AppSpector you can remotely debug your app running in the same room or on another continent. 
 You can measure app performance, view database content, logs, network requests and many more in realtime. 
 This is the instrument that you've been looking for. Don't limit yourself only to simple logs. 
 Debugging don't have to be painful!
+
+
+* [Installation](#installation)
+* [Features](#features)
+* [Configure](#configure)
+    * [Custom device name](#custom-device-name)
+    * [Start/Stop SDK](#startstop-sdk)
+    * [Filtering your data](#filtering-your-data)
+    * [Getting session URL](#getting-session-url)
+
 
 
 ## Installation
@@ -14,8 +25,6 @@ To use AppSpector on tvOS just follow installation steps below but use AppSpecto
 #### CocoaPods
 <!-- integration-pods-start -->
 To use cocoapods add this line to your podfile and run `pod install`:
-
-[![GitHub release](https://img.shields.io/github/release/appspector/ios-sdk.svg)](https://github.com/appspector/ios-sdk)
 
 ```
 pod 'AppSpectorSDK'
@@ -239,6 +248,20 @@ Or we want to raise log level to `warning` for all messages containing word 'tok
 ```
 
 See events headers for more info.
+
+## Getting session URL
+Sometimes you may need to get URL pointing to current session from code. Say you want link crash in your crash reporter with it, write it to logs or display in your debug UI. To get this URL you have to add a session start callback:
+
+```
+[config setStartCallback:^(NSURL *sessionURL) {
+    // Save url for future use...
+}];
+```
+
+Some hints:
+- Callback get called on a non-main thread and not guaranteed to be called on a caller thread so be carefull with not thread-safe APIs inside it
+- Callback will be called again upon restart, either when you call `stop`/`start` methods or when session was dropped due to networking issues
+
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
