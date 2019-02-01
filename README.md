@@ -24,7 +24,7 @@ To use AppSpector on tvOS just follow installation steps below but use AppSpecto
 
 #### CocoaPods
 <!-- integration-pods-start -->
-To use cocoapods add this line to your podfile and run `pod install`:
+To use CocoaPods add this line to your podfile and run `pod install`:
 
 ```
 pod 'AppSpectorSDK'
