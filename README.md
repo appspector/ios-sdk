@@ -146,12 +146,12 @@ First import the framework:
 import AppSpectorSDK
 ```
 
-Starting only selected monitors:
+Start selected monitors only
 ```swift
 let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [Monitor.http, Monitor.logs])
 AppSpector.run(with: config)
 ```
-or to start all monitors:
+or start all monitors
 ```
 let config = AppSpectorConfig(apiKey: "API_KEY")
 AppSpector.run(with: config)
@@ -165,14 +165,14 @@ First import the framework:
 @import AppSpectorSDK;
 ```
 
-Starting only selected monitors:
+Start selected monitors only
 ```objective-c
 NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" monitorIDs:monitorIDs];
 [AppSpector runWithConfig:config];
 ```
 
-Or all at once:
+or start all monitors
 ```
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 [AppSpector runWithConfig:config];
