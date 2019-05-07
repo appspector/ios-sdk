@@ -221,7 +221,7 @@ When you link with AppSpector framework it starts to collect data immediately af
 
 You can manually control AppSpector state by calling `start` and `stop` methods.
 `stop` tells AppSpector to disable all data collection and close current session.
-`start` starts it again using config you provided at load. This will be a new session, all activity between `stop` and `start` calls will not be tracked.
+`start` starts it again using config you provided at load. This will be a new session, all activity between `stop` and `start` calls will not be tracked. To check current SDK state you can use `+ (BOOL)isRunning` method.
 
 #### Swift
 <!-- start-stop-swift-example-start -->
