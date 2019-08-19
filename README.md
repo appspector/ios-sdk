@@ -205,7 +205,7 @@ To do this you have to add desired name as a value for `AS_DEVICE_NAME_KEY` key 
 #### Swift
 ```swift
 let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [Monitor.http, Monitor.logs])
-config.metadata = [ MetadataKey.DeviceNameKey : "Your device name" ]
+config.metadata = [ DeviceNameKey : "Your device name" ]
 ```
 
 #### Objective-C
