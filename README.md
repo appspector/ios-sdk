@@ -31,14 +31,23 @@ To use CocoaPods add this line to your podfile and run `pod install`:
 ```
 pod 'AppSpectorSDK'
 ```
+
+To get SDK version with [encryption](#end-to-end-encryption) feature use `AppSpectorE2E` pod:
+```
+pod 'AppSpectorSDKE2E'
+```
+
 <!-- integration-pods-end -->
 
 #### Carthage
 <!-- integration-carthage-start -->
 - Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
-- Add `binary "https://github.com/appspector/ios-sdk/raw/1.2.8/AppSpector.json"` to your Cartfile
+- Add `binary "https://github.com/appspector/ios-sdk/raw/1.2.9/AppSpector.json"` to your Cartfile
 - Run `carthage update`
 - Drag [AppSpectorSDK.framework](https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDK.framework.zip?raw=true) from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
+
+To get SDK version with [encryption](#end-to-end-encryption) feature use `AppSpectorE2E` link:
+https://raw.githubusercontent.com/appspector/ios-sdk/1.2.9/AppSpectorE2E.json
 <!-- integration-carthage-end -->
 
 #### Manually
@@ -139,9 +148,9 @@ And naturally you can post notifications to your app from the frontend.
 
 AppSpector SDK collects and stores user data including logs, DB content and network traffic. All of this can contain sensetive data so to protect your privacy we offer separate build of the SDK with E2EE feature.
 It allows you to encrypt all data AppSpector sends from or to your device and be sure only you can decrypt it.
-To use encryption all you need is a special SDK version (see Installation for more details) and [AppSpector desktop application](https://appapector.com). Due to security reasons encrypted sessions are only available in desktop app.
+To use encryption all you need is a special SDK version (see [Installation](#installation) for more details) and [AppSpector desktop application](https://appapector.com). Due to security reasons encrypted sessions are only available in desktop app.
 
-To start using encryption you have to create a new application from the desktop app and enable E2E switch. After that please navigate to setup guide where you can as usual get your API key and public key used for encrypted sessions. Pass this keys to the `AppSpectorConfig` and you are ready to go. Refer Configure section for more details.
+To start using encryption you have to create a new application from the desktop app and enable E2E switch. After that please navigate to setup guide where you can as usual get your API key and public key used for encrypted sessions. Pass this keys to the `AppSpectorConfig` and you are ready to go. Please refer to the [Configure](#configure) section for more details.
 
 ### Filtering your data
 Sometimes you may want to adjust or completely skip some pieces of data AppSpector gather. We have a special feature called Sanitizing for this, for now it's available only for HTTP and logs monitors, more coming.
