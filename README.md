@@ -9,11 +9,13 @@ Debugging don't have to be painful!
 
 * [Installation](#installation)
 * [Features](#features)
+    * [Monitors](#monitors)
+    * [End-to-End encryption](#end-to-end-encryption)
+    * [Filtering your data](#filtering-your-data)
+    * [Getting session URL](#getting-session-url)
 * [Configure](#configure)
     * [Custom device name](#custom-device-name)
     * [Start/Stop SDK](#startstop-sdk)
-    * [Filtering your data](#filtering-your-data)
-    * [Getting session URL](#getting-session-url)
 
 
 
@@ -92,6 +94,8 @@ AppSpector is also available for tvOS, you can use any of described above method
 ## Features
 AppSpector provides 10 monitors that tracks different activities inside your app:
 
+### Monitors
+
 #### CoreData monitor
 Browser for CoreData stores in your app. Shows model scheme just like Xcode editor, allows to navigate data, follow relations, switching contexts and running custom fetch requests against any model / context.
 
@@ -130,6 +134,56 @@ Gathers all of the environment variables and arguments in one place, info.plist,
 #### Notification Center monitor
 Tracks all posted notifications and subscriptions. You can examine notification user info, sender/reciever objects, etc.
 And naturally you can post notifications to your app from the frontend.
+
+### End-to-End encryption
+
+AppSpector SDK collects and stores user data including logs, DB content and network traffic. All of this can contain sensetive data so to protect your privacy we offer separate build of the SDK with E2EE feature.
+It allows you to encrypt all data AppSpector sends from or to your device and be sure only you can decrypt it.
+To use encryption all you need is a special SDK version (see Installation for more details) and [AppSpector desktop application](https://appapector.com). Due to security reasons encrypted sessions are only available in desktop app.
+
+To start using encryption you have to create a new application from the desktop app and enable E2E switch. After that please navigate to setup guide where you can as usual get your API key and public key used for encrypted sessions. Pass this keys to the `AppSpectorConfig` and you are ready to go. Refer Configure section for more details.
+
+### Filtering your data
+Sometimes you may want to adjust or completely skip some pieces of data AppSpector gather. We have a special feature called Sanitizing for this, for now it's available only for HTTP and logs monitors, more coming.
+For these two monitors you can provide a filter which allows to modify or block events before AppSpector sends them to the backend. Filter is a callback you assign to a `AppSpectorConfig` property `httpSanitizer` for HTTP monitor or `logSanitizer` for logs monitor. Filter callback gets event as its argument and should return it.
+
+Some examples. Let's say we want to skip our auth token from requests headers:
+```
+[config.httpSanitizer setFilter:^ASHTTPEvent *(ASHTTPEvent *event) {
+    if ([event.request.allHTTPHeaderFields.allKeys containsObject:@"YOUR-AUTH-HEADER"]) {
+        [event.request setValue:@"redacted" forHTTPHeaderField:@"YOUR-AUTH-HEADER"];
+    }
+
+    return event;
+}];
+```
+
+Or we want to raise log level to `warning` for all messages containing word 'token':
+```
+[config.logSanitizer setFilter:^ASLogMonitorEvent *(ASLogMonitorEvent *event) {
+    if ([event.message rangeOfString:@"token"].location != NSNotFound) {
+        event.level = ASLogEventLevelWarn;
+    }
+
+    return event;
+}];
+```
+
+See events headers for more info.
+
+### Getting session URL
+Sometimes you may need to get URL pointing to current session from code. Say you want link crash in your crash reporter with it, write it to logs or display in your debug UI. To get this URL you have to add a session start callback:
+
+```
+[config setStartCallback:^(NSURL *sessionURL) {
+    // Save url for future use...
+}];
+```
+
+Some hints:
+- Callback get called on a non-main thread and not guaranteed to be called on a caller thread so be carefull with not thread-safe APIs inside it
+- Callback will be called again upon restart, either when you call `stop`/`start` methods or when session was dropped due to networking issues
+
 
 ## Configure
 AppSpector uses modules called monitors to track different app activities and gather stats.
@@ -238,48 +292,6 @@ AppSpector.start()
 [AppSpector start];
 ```
 <!-- start-stop-objc-example-end -->
-
-## Filtering your data
-Sometimes you may want to adjust or completely skip some pieces of data AppSpector gather. We have a special feature called Sanitizing for this, for now it's available only for HTTP and logs monitors, more coming.
-For these two monitors you can provide a filter which allows to modify or block events before AppSpector sends them to the backend. Filter is a callback you assign to a `AppSpectorConfig` property `httpSanitizer` for HTTP monitor or `logSanitizer` for logs monitor. Filter callback gets event as its argument and should return it.
-
-Some examples. Let's say we want to skip our auth token from requests headers:
-```
-[config.httpSanitizer setFilter:^ASHTTPEvent *(ASHTTPEvent *event) {
-    if ([event.request.allHTTPHeaderFields.allKeys containsObject:@"YOUR-AUTH-HEADER"]) {
-        [event.request setValue:@"redacted" forHTTPHeaderField:@"YOUR-AUTH-HEADER"];
-    }
-
-    return event;
-}];
-```
-
-Or we want to raise log level to `warning` for all messages containing word 'token':
-```
-[config.logSanitizer setFilter:^ASLogMonitorEvent *(ASLogMonitorEvent *event) {
-    if ([event.message rangeOfString:@"token"].location != NSNotFound) {
-        event.level = ASLogEventLevelWarn;
-    }
-
-    return event;
-}];
-```
-
-See events headers for more info.
-
-## Getting session URL
-Sometimes you may need to get URL pointing to current session from code. Say you want link crash in your crash reporter with it, write it to logs or display in your debug UI. To get this URL you have to add a session start callback:
-
-```
-[config setStartCallback:^(NSURL *sessionURL) {
-    // Save url for future use...
-}];
-```
-
-Some hints:
-- Callback get called on a non-main thread and not guaranteed to be called on a caller thread so be carefull with not thread-safe APIs inside it
-- Callback will be called again upon restart, either when you call `stop`/`start` methods or when session was dropped due to networking issues
-
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
