@@ -258,6 +258,21 @@ or start all monitors
 AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
 [AppSpector runWithConfig:config];
 ```
+
+To start encrypted session you need to use SDK version with E2EE enabled (see [Installation](#installation) for details) and provide your app public key alongside with API key:
+
+#### Swift
+```
+let config = AppSpectorConfig(apiKey: "API_KEY", publicKey: "PUB_KEY")
+AppSpector.run(with: config)
+```
+
+#### Objective-C
+```
+AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" publicKey:@"PUB_KEY"];
+[AppSpector runWithConfig:config];
+```
+
 <!-- integration-objc-example-end -->
 
 ## Custom device name
