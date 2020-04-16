@@ -148,7 +148,7 @@ And naturally you can post notifications to your app from the frontend.
 
 AppSpector SDK collects and stores user data including logs, DB content and network traffic. All of this can contain sensetive data so to protect your privacy we offer separate build of the SDK with E2EE feature.
 It allows you to encrypt all data AppSpector sends from or to your device and be sure only you can decrypt it.
-To use encryption all you need is a special SDK version (see [Installation](#installation) for more details) and [AppSpector desktop application](https://appapector.com). Due to security reasons encrypted sessions are only available in desktop app.
+To use encryption all you need is a special SDK version (see [Installation](#installation) for more details) and [AppSpector desktop application](https://appspector.com). Due to security reasons encrypted sessions are only available in desktop app.
 
 To start using encryption you have to create a new application from the desktop app and enable E2E switch. After that please navigate to setup guide where you can as usual get your API key and public key used for encrypted sessions. Pass this keys to the `AppSpectorConfig` and you are ready to go. Please refer to the [Configure](#configure) section for more details.
 
