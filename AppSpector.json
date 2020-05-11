@@ -33,5 +33,6 @@
  "1.2.6": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.6/AppSpectorSDK.framework.zip",
  "1.2.7": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.7/AppSpectorSDK.framework.zip",
  "1.2.8": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.8/AppSpectorSDK.framework.zip",
- "1.2.9": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.9/AppSpectorSDK.framework.zip"
+ "1.2.9": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.9/AppSpectorSDK.framework.zip",
+ "1.2.10": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.10/AppSpectorSDK.framework.zip"
 }
