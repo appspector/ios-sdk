@@ -26,6 +26,7 @@
  "1.1.7": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.1.7/AppSpectorSDKE2E.framework.zip",
  "1.2": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2/AppSpectorSDKE2E.framework.zip",
  "1.2.1": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.1/AppSpectorSDKE2E.framework.zip",
+ "1.2.10": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.10/AppSpectorSDKE2E.framework.zip",
  "1.2.2": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.2/AppSpectorSDKE2E.framework.zip",
  "1.2.3": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.3/AppSpectorSDKE2E.framework.zip",
  "1.2.4": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.4/AppSpectorSDKE2E.framework.zip",
@@ -34,5 +35,5 @@
  "1.2.7": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.7/AppSpectorSDKE2E.framework.zip",
  "1.2.8": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.8/AppSpectorSDKE2E.framework.zip",
  "1.2.9": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.9/AppSpectorSDKE2E.framework.zip",
- "1.2.10": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.2.10/AppSpectorSDKE2E.framework.zip"
+ "1.3": "https://github.com/appspector/appspector-ios-sdk-binary/raw/1.3/AppSpectorSDKE2E.framework.zip"
 }
