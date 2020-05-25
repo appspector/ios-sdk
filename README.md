@@ -144,6 +144,9 @@ Gathers all of the environment variables and arguments in one place, info.plist,
 Tracks all posted notifications and subscriptions. You can examine notification user info, sender/reciever objects, etc.
 And naturally you can post notifications to your app from the frontend.
 
+#### File System monitor
+Provides access to the application sandbox and bundle. Using this monitor you can download, remove or upload files, create directories and just walk around your app FS.
+
 ### End-to-End encryption
 
 AppSpector SDK collects and stores user data including logs, DB content and network traffic. All of this can contain sensetive data so to protect your privacy we offer separate build of the SDK with E2EE feature.
