@@ -181,6 +181,7 @@ Note that you need to mark command parameters as `@objc dynamic var` and options
 For more details please see `ASCommand` header.
 
 After creating command class you need to register it with SDK:
+
 Obj-C:
 ```objective-c
 [AppSpector addCommand:[MyCommand class] withCallback:^(MyCommand *c) {
