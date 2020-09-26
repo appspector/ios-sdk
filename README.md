@@ -147,6 +147,57 @@ And naturally you can post notifications to your app from the frontend.
 #### File System monitor
 Provides access to the application sandbox and bundle. Using this monitor you can download, remove or upload files, create directories and just walk around your app FS.
 
+#### Commands monitor
+In short commands monitor is a remote callback collection. It allows you to register custom class as a command then trigger it from the frontend and complete or fail it from your code after performing some actions. To register the command it should be inherited from the `ASCommand` class:
+
+Obj-C:
+```objective-c
+@interface MyCommand : ASCommand
+@property (strong, nonatomic) NSDate *someDate;
+@end
+
+@implementation MyCommand
++ (NSString *)category { return @"Utilities"; }
++ (NSString *)name { return @"Logs"; }
+@end
+
+```
+Swift:
+```swift
+class MyCommand: ASCommand {
+    override class var category: String { "Utilities" }
+    override class var name: String { "Logs" }
+    
+    @objc dynamic var date: Date?
+
+    override init() {}
+
+    init(_ date: Date) {
+        self.date = date
+    }
+}
+```
+Note that you need to mark command parameters as `@objc dynamic var` and optionsl in Swift.
+For more details please see `ASCommand` header.
+
+After creating command class you need to register it with SDK:
+Obj-C:
+```objective-c
+[AppSpector addCommand:[MyCommand class] withCallback:^(MyCommand *c) {
+   // ...
+}];
+```
+Swift:
+```swift
+AppSpector.addCommand(MyCommand.self, withCallback: { c in
+   // ...
+})
+```
+Once you trigger command from the frontend callback will be triggered and command instance populated with data you filled in on the frontend will be passed as an argument. Inside the callback you should either call `complete` with params to finish te command or `fail` to fail it. Note please that queue callback will be triggered on is not guaranteed and never will be the main queue.
+
+#### Events monitor
+Events monitor allows you to send custom built event to the current session. Event will be processed as any other monitor event, displayed stored in history
+
 ### End-to-End encryption
 
 AppSpector SDK collects and stores user data including logs, DB content and network traffic. All of this can contain sensetive data so to protect your privacy we offer separate build of the SDK with E2EE feature.
@@ -160,7 +211,7 @@ Sometimes you may want to adjust or completely skip some pieces of data AppSpect
 For these two monitors you can provide a filter which allows to modify or block events before AppSpector sends them to the backend. Filter is a callback you assign to a `AppSpectorConfig` property `httpSanitizer` for HTTP monitor or `logSanitizer` for logs monitor. Filter callback gets event as its argument and should return it.
 
 Some examples. Let's say we want to skip our auth token from requests headers:
-```
+```objective-c
 [config.httpSanitizer setFilter:^ASHTTPEvent *(ASHTTPEvent *event) {
     if ([event.request.allHTTPHeaderFields.allKeys containsObject:@"YOUR-AUTH-HEADER"]) {
         [event.request setValue:@"redacted" forHTTPHeaderField:@"YOUR-AUTH-HEADER"];
@@ -171,7 +222,7 @@ Some examples. Let's say we want to skip our auth token from requests headers:
 ```
 
 Or we want to raise log level to `warning` for all messages containing word 'token':
-```
+```objective-c
 [config.logSanitizer setFilter:^ASLogMonitorEvent *(ASLogMonitorEvent *event) {
     if ([event.message rangeOfString:@"token"].location != NSNotFound) {
         event.level = ASLogEventLevelWarn;
@@ -185,8 +236,7 @@ See events headers for more info.
 
 ### Getting session URL
 Sometimes you may need to get URL pointing to current session from code. Say you want link crash in your crash reporter with it, write it to logs or display in your debug UI. To get this URL you have to add a session start callback:
-
-```
+```objective-c
 [config setStartCallback:^(NSURL *sessionURL) {
     // Save url for future use...
 }];
@@ -203,15 +253,19 @@ We provide a bunch of monitors out of the box which could be used together or in
 To start AppSpector you need to build instance of `AppSpectorConfig` and provide your API key.
 You can start exact monitors with:
 
-```configWithAPIKey:(NSString *)apiKey monitorIDs:(NSSet <NSString *> *)monitorIDs``` 
+```objective-c
+configWithAPIKey:(NSString *)apiKey monitorIDs:(NSSet <NSString *> *)monitorIDs
+``` 
 
 Or start all available with:
 
-```configWithAPIKey:(NSString *)apiKey```
+```objective-c
+configWithAPIKey:(NSString *)apiKey
+```
 
 Available monitors:
 
-```
+```objective-c
 AS_SCREENSHOT_MONITOR
 AS_SQLITE_MONITOR
 AS_HTTP_MONITOR
@@ -226,7 +280,7 @@ AS_NOTIFICATION_MONITOR
 #### Swift
 <!-- integration-swift-example-start -->
 First import the framework:
-```
+```objective-c
 import AppSpectorSDK
 ```
 
@@ -236,7 +290,7 @@ let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [Monitor.http, Moni
 AppSpector.run(with: config)
 ```
 or start all monitors
-```
+```swift
 let config = AppSpectorConfig(apiKey: "API_KEY")
 AppSpector.run(with: config)
 ```
@@ -245,7 +299,7 @@ AppSpector.run(with: config)
 #### Objective-C
 <!-- integration-objc-example-start -->
 First import the framework:
-```
+```objective-c
 @import AppSpectorSDK;
 ```
 
