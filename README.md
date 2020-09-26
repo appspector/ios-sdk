@@ -177,7 +177,7 @@ class MyCommand: ASCommand {
     }
 }
 ```
-Note that you need to mark command parameters as `@objc dynamic var` and optionsl in Swift.
+Note that you need to mark command parameters as `@objc dynamic var` and optional in Swift.
 For more details please see `ASCommand` header.
 
 After creating command class you need to register it with SDK:
