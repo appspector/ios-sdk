@@ -23,7 +23,7 @@ let package = Package(
         .binaryTarget(
             name: "AppSpectorSDKE2E",
             url: "https://github.com///releases/download/1.3.6/AppSpectorSDKE2E.xcframework.zip",
-            checksum: 'b0278e7fdf6cb26c4185c51f5d713668504b894417bb9ea14b378a1ea2dd609b'
+            checksum: "b0278e7fdf6cb26c4185c51f5d713668504b894417bb9ea14b378a1ea2dd609b"
         ),
         .binaryTarget(
             name: "AppSpectorTVSDK",
