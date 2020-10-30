@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
    s.ios.deployment_target = '9.3'
    s.source           = { :http => 'https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDKE2E.zip?raw=true' }
    s.ios.vendored_frameworks = 'AppSpectorSDKE2E.framework'
-   s.dependency 'themis/themis-openssl'
+   s.dependency 'themis/themis-openssl', '0.13.3'
    s.pod_target_xcconfig = {
      'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
    }
