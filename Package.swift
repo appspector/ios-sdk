@@ -11,24 +11,21 @@ let package = Package(
             name: "AppSpector",
             targets: ["AppSpectorSDK", "AppSpectorSDKE2E", "AppSpectorTVSDK"])
     ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-    ],
     targets: [
         .binaryTarget(
             name: "AppSpectorSDK",
             url: "https://github.com/appspector/ios-sdk/releases/download/1.3.7/AppSpectorSDK.xcframework.zip",
-            checksum: "67cc93d540a4141b18147f99f9249e6d0ead71c13255876407d173d95e961167"
+            checksum: "e19bfc690acde770229fc9cabc301608821b887a86db2a33bdce97f8a5c7be1d"
         ),
         .binaryTarget(
             name: "AppSpectorSDKE2E",
             url: "https://github.com/appspector/ios-sdk/releases/download/1.3.7/AppSpectorSDKE2E.xcframework.zip",
-            checksum: '288853256793a333f5a7ab7169af4ce9bcbc135ac8e47571bb4fc50e83e70e7c'
+            checksum: "fd94e255888033699e430a1a119b2803bd2cf9de505d555f354f2afb5f2992dc"
         ),
         .binaryTarget(
             name: "AppSpectorTVSDK",
             url: "https://github.com/appspector/ios-sdk/releases/download/1.3.7/AppSpectorTVSDK.xcframework.zip",
-            checksum: "e7502aae5f11787f39662fee42414fa46de53b2ec29305b36590d1e25c8e7a2c"
+            checksum: "6f593f21d3746ad0b7b6c06964f425620476b033e8830d0973b30cb1a6b21d6e"
         )
     ]
 )
