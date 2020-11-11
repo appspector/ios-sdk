@@ -9,10 +9,10 @@ let package = Package(
     products: [
         .library(
             name: "AppSpectorSDK",
-            targets: ["AppSpectorSDK"])
+            targets: ["AppSpectorSDK"]),
         .library(
             name: "AppSpectorSDKE2E",
-            targets: ["AppSpectorSDKE2E"])
+            targets: ["AppSpectorSDKE2E"]),
         .library(
             name: "AppSpectorTVSDK",
             targets: ["AppSpectorTVSDK"])
