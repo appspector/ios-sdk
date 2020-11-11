@@ -51,6 +51,14 @@ To get SDK version with [encryption](#end-to-end-encryption) feature use `AppSpe
 https://raw.githubusercontent.com/appspector/ios-sdk/1.3.4/AppSpectorE2E.json
 <!-- integration-carthage-end -->
 
+#### SPM
+AppSpector supports SPM but unfortunately not for E2E version. Long story short: we have to wait for guys from openssl to support Apple Sillicon, so if you need version with end-to-end encryption SPM is not an option for you.
+
+We are sorry.
+
+
+For the rest of you: to install SDK via SPM just press '+' sign in Xcode list of packages and search for 'AppSpector'. Two targets will be available: for iOS and tvOS, choose which one you need, press 'next' and you are done.
+
 #### Manually
 <!-- integration-manual-start -->
 To manually link just download [AppSpectorSDK.framework](https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDK.framework.zip?raw=true) and drop AppSpectorSDK.framework to your XCode project.
