@@ -8,8 +8,14 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "AppSpector",
-            targets: ["AppSpectorSDK", "AppSpectorSDKE2E", "AppSpectorTVSDK"])
+            name: "AppSpectorSDK",
+            targets: ["AppSpectorSDK"])
+        .library(
+            name: "AppSpectorSDKE2E",
+            targets: ["AppSpectorSDKE2E"])
+        .library(
+            name: "AppSpectorTVSDK",
+            targets: ["AppSpectorTVSDK"])
     ],
     targets: [
         .binaryTarget(
