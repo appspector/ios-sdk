@@ -8,7 +8,7 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "AppSpectorSDK",
+            name: "AppSpector",
             targets: ["AppSpectorSDK"]),
         .library(
             name: "AppSpectorTVSDK",
@@ -17,13 +17,13 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "AppSpectorSDK",
-            url: "https://github.com/appspector/ios-sdk/releases/download/1.3.7/AppSpectorSDK.xcframework.zip",
-            checksum: "f00e30664b5854712abcc2e923575fa63e5b2e415e99d0212512ce751805a1a8"
+            url: "https://github.com/appspector/ios-sdk/releases/download/1.4.0/AppSpectorSDK.xcframework.zip",
+            checksum: "c06eb6591cb049970b97bc3e6505b872a96d1a4bca62942f017151288da1f7a0"
         ),
         .binaryTarget(
             name: "AppSpectorTVSDK",
-            url: "https://github.com/appspector/ios-sdk/releases/download/1.3.7/AppSpectorTVSDK.xcframework.zip",
-            checksum: "8d651b97f810d5d3f932abe2d786da58ee31411df7b495541fb5572ffbecab04"
+            url: "https://github.com/appspector/ios-sdk/releases/download/1.4.0/AppSpectorTVSDK.xcframework.zip",
+            checksum: "84108fe603088c6c650bff800ac8aad4bb1743de9b2b2e53d95626d7583856ba"
         )
     ]
 )
