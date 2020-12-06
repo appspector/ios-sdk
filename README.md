@@ -57,7 +57,7 @@ AppSpector supports SPM but unfortunately not for E2E version. Long story short:
 We are sorry.
 
 
-For the rest of you: to install SDK via SPM just press '+' sign in Xcode list of packages and paste repo address: 'https://github.com/appspector/ios-sdk' into the search field:
+For the rest of you: to install SDK via SPM just press '+' sign in Xcode list of packages and paste repo address: 'https://github.com/appspector/ios-sdk-spm' into the search field:
 # ![](https://github.com/appspector/ios-sdk/raw/master/spm-install-1.png)
 Two targets will be available: for iOS and tvOS, choose which one you need, press 'next' and you are done.
 
