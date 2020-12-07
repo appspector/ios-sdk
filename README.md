@@ -52,14 +52,15 @@ https://raw.githubusercontent.com/appspector/ios-sdk/1.3.4/AppSpectorE2E.json
 <!-- integration-carthage-end -->
 
 #### SPM
-AppSpector supports SPM but unfortunately not for E2E version. Long story short: we have to wait for guys from openssl to support Apple Sillicon, so if you need version with end-to-end encryption SPM is not an option for you.
-
-We are sorry.
+AppSpector supports SPM but unfortunately not for E2E version.
+Long story short: we have to wait for guys from openssl to support Apple Sillicon,
+so if you need version with end-to-end encryption please refer to the main repo (https://github.com/appspector/ios-sdk) and use one of the installation methods available.
 
 
 For the rest of you: to install SDK via SPM just press '+' sign in Xcode list of packages and paste repo address: 'https://github.com/appspector/ios-sdk-spm' into the search field:
-# ![](https://github.com/appspector/ios-sdk/raw/master/spm-install-1.png)
-Two targets will be available: for iOS and tvOS, choose which one you need, press 'next' and you are done.
+![](https://github.com/appspector/ios-sdk-spm/raw/master/spm-install-1.png)
+Two targets will be available: for iOS and tvOS, choose which one you need, press 'next' and you are done:
+![](https://github.com/appspector/ios-sdk-spm/raw/master/spm-install-2.png)
 
 #### Manually
 <!-- integration-manual-start -->
