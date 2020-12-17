@@ -164,46 +164,40 @@ In short commands monitor is a remote callback collection. It allows you to regi
 
 Obj-C:
 ```objective-c
-@interface MyCommand : ASCommand
-@property (strong, nonatomic) NSDate *someDate;
+@interface GetAppAuthStatus : ASCommand
 @end
 
 @implementation MyCommand
-+ (NSString *)category { return @"Utilities"; }
-+ (NSString *)name { return @"Logs"; }
++ (NSString *)category { return @"utils"; }
++ (NSString *)name { return @"logs"; }
 @end
 
 ```
 Swift:
 ```swift
-class MyCommand: ASCommand {
-    override class var category: String { "Utilities" }
-    override class var name: String { "Logs" }
-    
-    @objc dynamic var date: Date?
-
+class GetAppAuthStatus: ASCommand {
+    override class var category: String { "utils" }
+    override class var name: String { "logs" }
     override init() {}
-
-    init(_ date: Date) {
-        self.date = date
-    }
 }
 ```
 Note that you need to mark command parameters as `@objc dynamic var` and optional in Swift.
 For more details please see `ASCommand` header.
 
-After creating command class you need to register it with SDK:
+After creating command class you need to register it with SDK and provide callback:
 
 Obj-C:
 ```objective-c
-[AppSpector addCommand:[MyCommand class] withCallback:^(MyCommand *c) {
-   // ...
+[AppSpector addCommand:[GetAppAuthStatus class] withCallback:^(GetAppAuthStatus *c) {
+   Status status = [[AuthService shared] status];
+   c.complete(status);
 }];
 ```
 Swift:
 ```swift
-AppSpector.addCommand(MyCommand.self, withCallback: { c in
-   // ...
+AppSpector.addCommand(GetAppAuthStatus.self, withCallback: { c in
+   let status = AuthService.shared().status;
+   c.complete(status);
 })
 ```
 Once you trigger command from the frontend callback will be triggered and command instance populated with data you filled in on the frontend will be passed as an argument. Inside the callback you should either call `complete` with params to finish te command or `fail` to fail it. Note please that queue callback will be triggered on is not guaranteed and never will be the main queue.
