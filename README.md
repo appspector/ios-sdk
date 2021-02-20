@@ -43,7 +43,7 @@ pod 'AppSpectorSDKE2E'
 #### Carthage
 <!-- integration-carthage-start -->
 - Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
-- Add `binary "https://github.com/appspector/ios-sdk/raw/1.3.4/AppSpector.json"` to your Cartfile
+- Add `binary "https://github.com/appspector/ios-sdk/raw/1.4.0/AppSpector.json"` to your Cartfile
 - Run `carthage update`
 - Drag [AppSpectorSDK.framework](https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDK.framework.zip?raw=true) from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
 
