@@ -203,7 +203,97 @@ AppSpector.addCommand(GetAppAuthStatus.self, withCallback: { c in
 Once you trigger command from the frontend callback will be triggered and command instance populated with data you filled in on the frontend will be passed as an argument. Inside the callback you should either call `complete` with params to finish te command or `fail` to fail it. Note please that queue callback will be triggered on is not guaranteed and never will be the main queue.
 
 #### Events monitor
-Events monitor allows you to send custom built event to the current session. Event will be processed as any other monitor event, displayed stored in history
+Events monitor allows you to send custom built event to the current session. Event will be processed as any other monitor event, displayed and stored in history.
+To send event you build an instance of any object conforming to `ASCustomEventPayload` protocol.
+Payload protocol defines three properties of the event:
+
+- `name` is a unique name for the event. It's how you'll distinguish deifferent events.
+- `category` is used for a events grouping. e.g. you can have a "networking" group where you have events related to your app network layer.
+- `payload` is a dictionary containing data as a key/value pairs you want to attach to the event. Only KVC compliant types are supported.
+
+All of the above will be displayed on a frontend so you can easily find events. 
+
+After you have an instance of the payload you need to send it to the AppSpector SDK:
+
+Objective-C:
+```objective-c
++ (void)sendCustomEventWith:(id <ASCustomEventPayload>)payload;
+```
+Swift:
+```swift
+open class func sendCustomEvent(with payload: ASCustomEventPayload)
+```
+This method is thread safe and can be used from any thread.
+Payloads are just data containers so you can store them in your app as you want, send later, persist etc.
+
+Lets see an example of sendind a simple event:
+First define a class conforming to  a `ASCustomEventPayload` protocol:
+
+Objective-C:
+```objective-c
+// ASTestCustomEventPayload.h
+
+#import <AppSpectorSDK/AppSpector.h>
+
+@interface ASTestCustomEventPayload : NSObject <ASCustomEventPayload>
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *category;
+@property (nonatomic, strong) NSDictionary *payload;
+
+@end
+
+```
+```objective-c
+// ASTestCustomEventPayload.m
+@implementation ASTestCustomEventPayload
+@end
+```
+
+Swift:
+```swift
+class ASTestCustomEventPayload: NSObject, ASCustomEventPayload {
+    var name: String!
+    var category: String!
+    var payload: [AnyHashable : Any]!
+}
+
+```
+
+Then make an instance of it:
+
+Objective-C:
+```Objective-C
+ASTestCustomEventPayload *payload = [ASTestCustomEventPayload new];
+payload.name = @"My sample event";
+payload.category = @"Testing events";
+payload.payload = @{ @"int" : @1,
+                     @"float" : @(3.14f),
+                     @"bool" : @YES,
+                     @"string" : @"foo bar" };
+```
+
+Swift:
+```swift
+let payload = ASTestCustomEventPayload()
+payload.name = "My sample event"
+payload.category = "Testing events"
+payload.payload = ["Triggered at": "\(Date())"]
+```
+
+
+And finally send it to the SDK:
+
+Objective-C:
+```objective-c
+[AppSpector sendCustomEventWith:payload];
+```
+
+Swift:
+```swift
+AppSpector.sendCustomEvent(with: payload)
+```
+
 
 ### End-to-End encryption
 
