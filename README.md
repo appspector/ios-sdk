@@ -8,12 +8,12 @@ Debugging don't have to be painful!
 
 
 * [Installation](#installation)
+* [Configuration](#configure)
+* [Monitors](#monitors)
 * [Features](#features)
-    * [Monitors](#monitors)
     * [End-to-End encryption](#end-to-end-encryption)
     * [Filtering your data](#filtering-your-data)
     * [Getting session URL](#getting-session-url)
-* [Configure](#configure)
     * [Custom device name](#custom-device-name)
     * [Start/Stop SDK](#startstop-sdk)
 
@@ -21,7 +21,7 @@ Debugging don't have to be painful!
 
 ## Installation
 Each app you want to use with AppSpector SDK you have to register on the web (https://app.appspector.com).
-After adding the application navigate to app settings and copy API key.
+After adding the application navigate to app settings and copy the DSN URL.
 To use AppSpector on tvOS just follow installation steps below but use AppSpectorTVSDK instead.
 
 #### CocoaPods
@@ -42,12 +42,12 @@ pod 'AppSpectorSDKE2E'
 #### Carthage
 <!-- integration-carthage-start -->
 - Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage)
-- Add `binary "https://github.com/appspector/ios-sdk/raw/1.2.9/AppSpector.json"` to your Cartfile
+- Add `binary "https://github.com/appspector/ios-sdk/raw/1.4.0/AppSpector.json"` to your Cartfile
 - Run `carthage update`
 - Drag [AppSpectorSDK.framework](https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDK.framework.zip?raw=true) from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings
 
 To get SDK version with [encryption](#end-to-end-encryption) feature use `AppSpectorE2E` link:
-https://raw.githubusercontent.com/appspector/ios-sdk/1.2.9/AppSpectorE2E.json
+https://raw.githubusercontent.com/appspector/ios-sdk/1.4.0/AppSpectorE2E.json
 <!-- integration-carthage-end -->
 
 #### Manually
@@ -99,11 +99,98 @@ AppSpector is also available for tvOS, you can use any of described above method
 
 [Join our slack to discuss setup process and features](https://slack.appspector.com)
 
+## Configure
+AppSpector uses modules called monitors to track different app activities and gather stats.
+We provide a bunch of monitors out of the box which could be used together or in any combinations.
+AppSpector SDK uses DSN (data source name) URL for configuration. It's a valid URL containing your app credentials, ID and access token.
+You can get it on the frontend in a 'Setup guide' section. To provide DSN to the SDK use next API:
 
-## Features
+#### Objective-C
+```objective-c
+[AppSpectorConfig configWithDSNPath:[YOUR_APP_DSN]];
+```
+
+#### Swift
+```swift
+AppSpectorConfig(dsnPath: [YOUR_APP_DSN])
+```
+
+Available monitors:
+
+```
+AS_SCREENSHOT_MONITOR
+AS_SQLITE_MONITOR
+AS_HTTP_MONITOR
+AS_COREDATA_MONITOR
+AS_PERFORMANCE_MONITOR
+AS_LOG_MONITOR
+AS_LOCATION_MONITOR
+AS_ENVIRONMENT_MONITOR
+AS_NOTIFICATION_MONITOR
+AS_ANALYTICS_MONITOR
+AS_DEFAULTS_MONITOR
+AS_COMMANDS_MONITOR
+AS_CUSTOMEVENTS_MONITOR
+AS_FS_MONITOR
+```
+
+#### Swift
+<!-- integration-swift-example-start -->
+First import the framework:
+```
+import AppSpectorSDK
+```
+
+Start selected monitors only
+```swift
+let config = AppSpectorConfig(dsnPath: [YOUR_APP_DSN], monitorIDs: [Monitor.http, Monitor.logs])
+```
+or start all monitors
+```
+let config = AppSpectorConfig(dsnPath: [YOUR_APP_DSN])
+AppSpector.run(with: config)
+```
+<!-- integration-swift-example-end -->
+
+#### Objective-C
+<!-- integration-objc-example-start -->
+First import the framework:
+```
+@import AppSpectorSDK;
+```
+
+Start selected monitors only
+```objective-c
+NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
+AppSpectorConfig *config = [AppSpectorConfig configWithDSNPath:[YOUR_APP_DSN] monitorIDs:monitorIDs];
+[AppSpector runWithConfig:config];
+```
+
+or start all monitors
+```
+AppSpectorConfig *config = [AppSpectorConfig configWithDSNPath:[YOUR_APP_DSN]];
+[AppSpector runWithConfig:config];
+```
+
+To start encrypted session you need to use SDK version with E2EE enabled (see [Installation](#installation) for details) and provide your app public key alongside with API key:
+
+#### Swift
+```
+let config = AppSpectorConfig(apiKey: "API_KEY", publicKey: "PUB_KEY")
+AppSpector.run(with: config)
+```
+
+#### Objective-C
+```
+AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" publicKey:@"PUB_KEY"];
+[AppSpector runWithConfig:config];
+```
+
+<!-- integration-objc-example-end -->
+
+
+## Monitors
 AppSpector provides 10 monitors that tracks different activities inside your app:
-
-### Monitors
 
 #### CoreData monitor
 Browser for CoreData stores in your app. Shows model scheme just like Xcode editor, allows to navigate data, follow relations, switching contexts and running custom fetch requests against any model / context.
@@ -143,6 +230,8 @@ Gathers all of the environment variables and arguments in one place, info.plist,
 #### Notification Center monitor
 Tracks all posted notifications and subscriptions. You can examine notification user info, sender/reciever objects, etc.
 And naturally you can post notifications to your app from the frontend.
+
+## Features
 
 ### End-to-End encryption
 
@@ -193,87 +282,6 @@ Some hints:
 - Callback get called on a non-main thread and not guaranteed to be called on a caller thread so be carefull with not thread-safe APIs inside it
 - Callback will be called again upon restart, either when you call `stop`/`start` methods or when session was dropped due to networking issues
 
-
-## Configure
-AppSpector uses modules called monitors to track different app activities and gather stats.
-We provide a bunch of monitors out of the box which could be used together or in any combinations.
-To start AppSpector you need to build instance of `AppSpectorConfig` and provide your API key.
-You can start exact monitors with:
-
-```configWithAPIKey:(NSString *)apiKey monitorIDs:(NSSet <NSString *> *)monitorIDs``` 
-
-Or start all available with:
-
-```configWithAPIKey:(NSString *)apiKey```
-
-Available monitors:
-
-```
-AS_SCREENSHOT_MONITOR
-AS_SQLITE_MONITOR
-AS_HTTP_MONITOR
-AS_COREDATA_MONITOR
-AS_PERFORMANCE_MONITOR
-AS_LOG_MONITOR
-AS_LOCATION_MONITOR
-AS_ENVIRONMENT_MONITOR
-AS_NOTIFICATION_MONITOR
-```
-
-#### Swift
-<!-- integration-swift-example-start -->
-First import the framework:
-```
-import AppSpectorSDK
-```
-
-Start selected monitors only
-```swift
-let config = AppSpectorConfig(apiKey: "API_KEY", monitorIDs: [Monitor.http, Monitor.logs])
-AppSpector.run(with: config)
-```
-or start all monitors
-```
-let config = AppSpectorConfig(apiKey: "API_KEY")
-AppSpector.run(with: config)
-```
-<!-- integration-swift-example-end -->
-
-#### Objective-C
-<!-- integration-objc-example-start -->
-First import the framework:
-```
-@import AppSpectorSDK;
-```
-
-Start selected monitors only
-```objective-c
-NSSet *monitorIDs = [NSSet setWithObjects:AS_HTTP_MONITOR, AS_LOG_MONITOR, nil];
-AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" monitorIDs:monitorIDs];
-[AppSpector runWithConfig:config];
-```
-
-or start all monitors
-```
-AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY"];
-[AppSpector runWithConfig:config];
-```
-
-To start encrypted session you need to use SDK version with E2EE enabled (see [Installation](#installation) for details) and provide your app public key alongside with API key:
-
-#### Swift
-```
-let config = AppSpectorConfig(apiKey: "API_KEY", publicKey: "PUB_KEY")
-AppSpector.run(with: config)
-```
-
-#### Objective-C
-```
-AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" publicKey:@"PUB_KEY"];
-[AppSpector runWithConfig:config];
-```
-
-<!-- integration-objc-example-end -->
 
 ## Custom device name
 
