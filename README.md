@@ -9,6 +9,8 @@ Debugging don't have to be painful!
 
 * [Installation](#installation)
 * [Configuration](#configure)
+* [Sessions](#sessions)
+* [SDK in production mode](#sdk-in-production-mode)
 * [Monitors](#monitors)
 * [Features](#features)
     * [End-to-End encryption](#end-to-end-encryption)
@@ -16,7 +18,9 @@ Debugging don't have to be painful!
     * [Getting session URL](#getting-session-url)
     * [Custom device name](#custom-device-name)
     * [Start/Stop SDK](#startstop-sdk)
-
+    * [Session mode switch](#session-mode-switch)
+* [Migration from v1 SDK to v2](#migration-from-v1-sdk-to-v2)
+* [Feedback](#feedback)
 
 
 ## Installation
@@ -146,7 +150,7 @@ Start selected monitors only
 let config = AppSpectorConfig(dsnPath: [YOUR_APP_DSN], monitorIDs: [Monitor.http, Monitor.logs])
 ```
 or start all monitors
-```
+```swift
 let config = AppSpectorConfig(dsnPath: [YOUR_APP_DSN])
 AppSpector.run(with: config)
 ```
@@ -175,7 +179,7 @@ AppSpectorConfig *config = [AppSpectorConfig configWithDSNPath:[YOUR_APP_DSN]];
 To start encrypted session you need to use SDK version with E2EE enabled (see [Installation](#installation) for details) and provide your app public key alongside with API key:
 
 #### Swift
-```
+```swift
 let config = AppSpectorConfig(apiKey: "API_KEY", publicKey: "PUB_KEY")
 AppSpector.run(with: config)
 ```
@@ -187,6 +191,18 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" publicK
 ```
 
 <!-- integration-objc-example-end -->
+
+
+## Sessions
+Session is a concept representing period from the start os the AppSpector SDK till it stop or host app termination.
+Sessions are stored on a backend with all related metadadta and received events. You can examine session contents both in realtime while session is running and later whan session has already finished. Sessions are persisted for a certain period of time which depends on your pricing plan.
+
+
+## SDK in production mode
+One of the most valuable AppSpector features is a special mode for running SDK in production environment.
+From version 2 SDK has two ways to run sessions: live and buffered. Main difference is that in buffered mode SDK does not open persistent socket connection to the backend. This saves energy and provides minimal impact on the end user experience while using the app. In most cases user will not even notice AppSpector is here.
+
+Buffered sessions looks same as live ones on the frontend with one major difference: two way interaction is not available for them. You cant influence SDK in that mode, this means you can't navigate CoreData store, take screenshots etc. Sessions in buffered mode looks mostly like offline sessions, you can see data in most monitors but can't interact with them.
 
 
 ## Monitors
@@ -324,6 +340,33 @@ AppSpector.start()
 [AppSpector start];
 ```
 <!-- start-stop-objc-example-end -->
+
+## Session mode switch
+
+Starting v2 SDK provides to types of sessions: Live and Buffered. SDK provides API for switch from one to another:
+#### Objective-C
+```objective-c
+[AppSpector transitionTo:SDKSessionModeBuffered];
+```
+#### Swift
+```swift
+AppSpector.transition(to: .buffered)
+```
+
+Also `AppSpetorConfig` now has an option to set default session mode to start with. This mode will be used by default when you start the SDK:
+#### Objective-C
+```objective-c
+AppSpectorConfig *config = [AppSpectorConfig configWithDSNPath:@"https://sdk.appspector.com/[YOUR_APP_ID]/[YOUR_APP_TOKEN]"];
+config.defaultSessionMode = SDKSessionModeBuffered;
+```
+#### Swift
+```swift
+let config = AppSpectorConfig(dsnPath: "https://sdk.appspector.com/[YOUR_APP_ID]/[YOUR_APP_TOKEN]")
+config.defaultSessionMode = .buffered
+```
+
+## Migration from v1 SDK to v2
+We know it's always hard to maintain breaking changes in third party SDKs. Thats why we prepared a special migration guide for you to move from AppSpector v1 to v2 without any issues and in 5 minutes: [AppSpector migration guide](https://github.com/appspector/ios-sdk/raw/readme-update/MIGRATION.md)
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
