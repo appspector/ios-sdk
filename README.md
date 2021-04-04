@@ -366,7 +366,7 @@ config.defaultSessionMode = .buffered
 ```
 
 ## Migration from v1 SDK to v2
-We know it's always hard to maintain breaking changes in third party SDKs. Thats why we prepared a special migration guide for you to move from AppSpector v1 to v2 without any issues and in 5 minutes: [AppSpector migration guide](https://github.com/appspector/ios-sdk/raw/readme-update/MIGRATION.md)
+We know it's always hard to maintain breaking changes in third party SDKs. Thats why we prepared a special migration guide for you to move from AppSpector v1 to v2 without any issues and in 5 minutes: [AppSpector migration guide](https://github.com/appspector/ios-sdk/blob/readme-update/MIGRATION.md)
 
 ## Feedback
 Let us know what do you think or what would you like to be improved: [info@appspector.com](mailto:info@appspector.com).
