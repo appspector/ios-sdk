@@ -1,5 +1,4 @@
 [![GitHub release](https://img.shields.io/github/release/appspector/ios-sdk.svg)](https://github.com/appspector/ios-sdk)
-[![Build Status](https://app.bitrise.io/app/17e138eab39135f1/status.svg?token=jlmNh2tlt2SQojwlhMojNw)](https://app.bitrise.io/app/17e138eab39135f1)
 # ![AppSpector](https://github.com/appspector/ios-sdk/raw/master/github-cover.png)
 
 With AppSpector you can remotely debug your app running in the same room or on another continent. 
