@@ -9,6 +9,4 @@ Pod::Spec.new do |s|
     s.tvos.deployment_target = '10.0'
     s.tvos.vendored_frameworks = 'AppSpectorTVSDK.framework'
     s.source           = { :http => 'https://github.com/appspector/ios-sdk/blob/master/AppSpectorTVSDK.zip?raw=true' }
-    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64' }
-    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=appletvsimulator*]' => 'arm64' }
 end
