@@ -42,6 +42,8 @@
  "1.3.7": "https://github.com/appspector/ios-sdk/raw/1.3.7/AppSpectorTVSDK.framework.zip",
  "1.4.0": "https://github.com/appspector/ios-sdk/raw/1.4.0/AppSpectorTVSDK.framework.zip",
  "1.4.1": "https://github.com/appspector/ios-sdk/raw/1.4.1/AppSpectorTVSDK.framework.zip",
+ "1.4.12": "https://github.com/appspector/ios-sdk/raw/1.4.12/AppSpectorTVSDK.framework.zip",
+ "1.4.13": "https://github.com/appspector/ios-sdk/raw/1.4.13/AppSpectorTVSDK.framework.zip",
  "1.4.2": "https://github.com/appspector/ios-sdk/raw/1.4.2/AppSpectorTVSDK.framework.zip",
  "1.4.3": "https://github.com/appspector/ios-sdk/raw/1.4.3/AppSpectorTVSDK.framework.zip",
  "1.4.4": "https://github.com/appspector/ios-sdk/raw/1.4.4/AppSpectorTVSDK.framework.zip",
@@ -49,6 +51,5 @@
  "1.4.6": "https://github.com/appspector/ios-sdk/raw/1.4.6/AppSpectorTVSDK.framework.zip",
  "1.4.7": "https://github.com/appspector/ios-sdk/raw/1.4.7/AppSpectorTVSDK.framework.zip",
  "1.4.8": "https://github.com/appspector/ios-sdk/raw/1.4.8/AppSpectorTVSDK.framework.zip",
- "1.4.9": "https://github.com/appspector/ios-sdk/raw/1.4.9/AppSpectorTVSDK.framework.zip",
- "1.4.12": "https://github.com/appspector/ios-sdk/raw/1.4.12/AppSpectorTVSDK.framework.zip"
+ "1.4.9": "https://github.com/appspector/ios-sdk/raw/1.4.9/AppSpectorTVSDK.framework.zip"
 }
