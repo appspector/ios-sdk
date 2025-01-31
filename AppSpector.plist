@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Monitors</key>
+	<array>
+		<string>AS_LOG_MONITOR</string>
+		<string>AS_HTTP_MONITOR</string>
+		<string>AS_COREDATA_MONITOR</string>
+		<string>AS_PERFORMANCE_MONITOR</string>
+		<string>AS_LOCATION_MONITOR</string>
+		<string>AS_ENVIRONMENT_MONITOR</string>
+		<string>AS_NOTIFICATION_MONITOR</string>
+		<string>AS_ANALYTICS_MONITOR</string>
+		<string>AS_DEFAULTS_MONITOR</string>
+		<string>AS_COMMANDS_MONITOR</string>
+		<string>AS_LOCATION_MONITOR</string>
+		<string>AS_CUSTOMEVENTS_MONITOR</string>
+		<string>AS_SQLITE_MONITOR</string>
+		<string>AS_SCREENSHOT_MONITOR</string>
+		<string>AS_FS_MONITOR</string>
+	</array>
+	<key>API Key</key>
+	<string>YOUR_API_KEY</string>
+	<key>Public Key</key>
+	<string>YOUR_PUB_KEY</string>
+</dict>
+</plist>
