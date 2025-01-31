@@ -198,7 +198,7 @@ AppSpector provides an alternative method to configure the SDK by adding a prope
 
 The file should be named AppSpector.plist, be a valid plist file, and placed in the root of your app bundle. 
 If the SDK finds this configuration file, it will start automatically when the app loads and ignore subsequent calls to the `start` method.
-You can find an example plist file [here]([https://slack.appspector.com](https://github.com/appspector/ios-sdk/blob/readme-update/AppSpector.plist)). Simply copy it to your project and modify the keys as needed.
+You can find an example plist file [here](https://slack.appspector.com](https://github.com/appspector/ios-sdk/blob/readme-update/AppSpector.plist). Simply copy it to your project and modify the keys as needed.
 The plist configuration contains a list of monitors to be started. If you want to prevent a specific monitor from running, remove it from the list, and it will not be initialized. 
 
 You can start a monitor later from the dashboard.
