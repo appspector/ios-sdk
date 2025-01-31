@@ -192,6 +192,19 @@ AppSpectorConfig *config = [AppSpectorConfig configWithAPIKey:@"API_KEY" publicK
 
 <!-- integration-objc-example-end -->
 
+#### Plist based config
+
+AppSpector offers an additional way to configure SDK - via adding a plist file to your project with all needed info.
+File should be called AppSpector.plist, be a valid plist and placed in the root of your app bundle.
+In case SDK founds plist configuration file it starts immediately on app load and ignores further calls to `start` method.
+You can find an example of plist file [here](https://slack.appspector.com)
+Just copy it to your project and change keys.
+
+Plist config contains list of monitors to start.
+If you want to avoid running a certain monitor just remove it from the list and it will not start.
+
+You can start monitor later from the dashboaard.
+See [docs](https://slack.appspector.com) on running monitors on demand for more details.
 
 ## Sessions
 Session is a concept representing period from the start os the AppSpector SDK till it stop or host app termination.
