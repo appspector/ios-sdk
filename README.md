@@ -59,7 +59,7 @@ Two targets will be available: for iOS and tvOS, choose which one you need, pres
 
 #### Manually
 <!-- integration-manual-start -->
-To manually link just download [AppSpectorSDK.framework](https://github.com/appspector/ios-sdk/blob/master/AppSpectorSDK.framework.zip?raw=true) and drop AppSpectorSDK.framework to your XCode project.
+To manually link just download [AppSpectorSDK.framework](https://github.com/appspector/ios-sdk/releases/latest/download/AppSpectorSDK.xcframework.zip) and drop AppSpectorSDK.framework to your XCode project.
 Then navigate to your project settings and under 'General' tab add AppSpectorSDK framework to 'Embedded Binaries' section.
 
 If you plan either to submit builds with AppSpector SDK to the Apple TestFlight for testing or archive them for AdHoc distribution you'll have to perform one more step: create a new “Run Script Phase” in your app’s target’s “Build Phases” and paste the following script:
