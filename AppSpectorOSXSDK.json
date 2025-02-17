@@ -51,5 +51,6 @@
  "1.4.6": "https://github.com/appspector/ios-sdk/raw/1.4.6/AppSpectorOSXSDK.framework.zip",
  "1.4.7": "https://github.com/appspector/ios-sdk/raw/1.4.7/AppSpectorOSXSDK.framework.zip",
  "1.4.8": "https://github.com/appspector/ios-sdk/raw/1.4.8/AppSpectorOSXSDK.framework.zip",
- "1.4.9": "https://github.com/appspector/ios-sdk/raw/1.4.9/AppSpectorOSXSDK.framework.zip"
+ "1.4.9": "https://github.com/appspector/ios-sdk/raw/1.4.9/AppSpectorOSXSDK.framework.zip",
+ "1.5": "https://github.com/appspector/ios-sdk/raw/1.5/AppSpectorOSXSDK.framework.zip"
 }
